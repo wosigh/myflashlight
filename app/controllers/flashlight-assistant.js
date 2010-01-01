@@ -40,7 +40,7 @@ enableFlashlight: function() {
 	this.controller.get('modeSwitchDescription_OFF').hide();
         this.controller.get('modeSwitchDescription_ON').show();
         this.controller.serviceRequest('palm://net.vertigostudios.ledmanager', {
-            method: 'flameOn2',
+            method: 'flameOn',
                 parameters: {}
                                                 });
                                                 
@@ -56,10 +56,11 @@ disableFlashlight: function() {
 },
 getVersion: function() {
 try {
+this.controller.get('version').innerHTML = "get version";
 	this.controller.serviceRequest('palm://net.vertigostudios.ledmanager', {
 		method: 'version',
 			parameters: {},
-				OnSuccess: function(string) { this.controller.get('version').innerHTML = string; },
+				OnSuccess: function(string) { this.controller.get('version').innerHTML = string.version; },
 				OnFailure: function(string) { this.controller.get('version').innerHTML = string; }
 			
 		});
