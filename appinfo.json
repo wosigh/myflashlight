@@ -1,6 +1,6 @@
 {
     "title": "myFlashLight!",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "type": "web",
     "main": "index.html",
     "id": "net.vertigo-studios.app.myflashlight",
