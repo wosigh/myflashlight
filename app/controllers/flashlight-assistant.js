@@ -1,9 +1,10 @@
 
 var ctrlr;
+
 var FlashlightAssistant = Class.create( {
 initialize: function() {
     Mojo.Log.info("Initialize");
-
+    this.iFlameStatus = 0;
 	//this.disableFlashlight();
     this.onOffToggleOpt= {
 	    modelProperty: 'toggleOpt',
@@ -23,7 +24,17 @@ setup: function(){
     ctrlr=this.controller;
     this.controller.setupWidget('onOffToggle', this.onOffToggleOpt, this.toggleModel);
     this.controller.get('onOffToggle').observe('mojo-property-change', this.selectorChangedHandler.bind(this));
-	this.getVersion();
+	this.flameStatus();
+	Mojo.Log.error("flamestatus "+this.iFlameStatus);
+	if(this.iFlameStatus == 0) {
+		this.toggleModel.toggleOpt = "ON";
+		this.controller.modelChanged(this.toggleModel);
+		this.enableFlashlight();
+	}
+},
+
+deactivate: function(e) {
+	this.disableFlashlight();
 },
 
 selectorChangedHandler: function(e) {
@@ -52,6 +63,21 @@ disableFlashlight: function() {
 	    method: 'flameOff',
 	        parameters: {}
 	                                        });
+	                                        
+},
+flameStatus: function() {
+	this.controller.serviceRequest('palm://net.vertigostudios.ledmanager', {
+	    method: 'flameStatus',
+		OnSuccess: function(data) { 
+				Mojo.Log.error(data.status);
+				if(data.status) {
+					this.iFlameStatus = data.status;
+				} else {
+					this.iFlameStatus = 0;
+				}}.bind(this),
+	        parameters: {}
+	                                        });
+	
 	                                        
 },
 getVersion: function() {
