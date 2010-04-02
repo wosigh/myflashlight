@@ -1,9 +1,9 @@
 {
     "title": "myFlashLight!",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "type": "web",
     "main": "index.html",
-    "id": "net.vertigo-studios.app.myflashlight",
+    "id": "net.vertigo-studios.myflashlight",
     "icon": "icon.png",
     "vendor": "Brian Jost",
     "vendorurl": "",
