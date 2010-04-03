@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=net.vertigostudios.ledmanager
+Exec=/var/usr/sbin/net.vertigostudios.ledmanager

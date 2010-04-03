@@ -1,0 +1,7 @@
+description "LED Manager Service"
+
+start on stopped finish
+
+exec /var/usr/sbin/net.vertigostudios.ledmanager
+
+respawn
