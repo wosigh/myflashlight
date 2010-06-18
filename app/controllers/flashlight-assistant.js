@@ -20,6 +20,13 @@ initialize: function() {
 },
 
 setup: function(){
+
+    this.controller.get('main-title').innerHTML = $L("myFlashlight!"); 
+    this.controller.get('flashlightMode').innerHTML = $L("Flashlight Mode");
+    this.controller.get('modeSwitchDescription_ON').innerHTML = $L("Your flashlight is ON!  Remember to turn it off so you don't waste your battery!");
+    this.controller.get('modeSwitchDescription_OFF').innerHTML = $L("Your flashlight is OFF!  Flip the switch to turn it on.");
+    this.controller.get('app-footer').innerHTML = $L("<hr/> <a href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=10858526\">Donate</a> <br> &copy; 2009 PreGame");
+
     Mojo.Log.info("Setup");
     ctrlr=this.controller;
     this.controller.setupWidget('onOffToggle', this.onOffToggleOpt, this.toggleModel);
